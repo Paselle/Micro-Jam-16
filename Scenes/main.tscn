@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://5iqes8wiuhe2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d232c"]
+
+[node name="Main" type="Node"]
+
+[node name="Ship" type="CharacterBody3D" parent="."]
+
+[node name="Collision" type="CollisionShape3D" parent="Ship"]
+shape = SubResource("BoxShape3D_d232c")
+
+[node name="Sprite" type="Sprite3D" parent="Ship"]
