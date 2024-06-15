@@ -20,5 +20,5 @@ mesh = SubResource("CapsuleMesh_3bine")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.527154, 0)
 
 [node name="Camera" type="Camera3D" parent="Marker"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78522, 2.96355)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.690026, 2.96355)
 fov = 84.375

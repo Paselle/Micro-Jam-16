@@ -1,7 +1,8 @@
 extends CharacterBody3D
 
 
-const SPEED = 5.0
+const ACCEL = 5.0
+const TURN_SPEED = 100.0
 const JUMP_VELOCITY = 4.5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -10,7 +11,6 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 # Get the player camera
 @onready var main_camera := $Marker/Camera
 @onready var marker_3d = $Marker
-
 
 # Make the camera variables
 var camera_rotation = Vector2(0, 0)
@@ -38,7 +38,7 @@ func camera_look(movement: Vector2) -> void:
 	# Add how much the camera has moved to the camera rotation
 	camera_rotation += movement
 	# Stop the player from making the camera go upside down by looking too far up and down
-	#camera_rotation.y = clamp(camera_rotation.y, deg_to_rad(-90), deg_to_rad(90))
+	camera_rotation.y = clamp(camera_rotation.y, deg_to_rad(-90), deg_to_rad(90))
 
 	# Reset the transform basis
 	transform.basis = Basis()
@@ -49,16 +49,16 @@ func camera_look(movement: Vector2) -> void:
 	marker_3d.rotate_object_local(Vector3.RIGHT, -camera_rotation.y)
 
 func _physics_process(delta):
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	# Accelerate
+	if Input.is_action_pressed("thrust"):
+		velocity += Vector3(ACCEL, 0, 0)
+	elif Input.is_action_pressed("brake"):
+		velocity -= Vector3(ACCEL, 0, 0)
+	
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
-	var direction = (transform.basis * Vector3(input_dir.x, input_dir.y, 0)).normalized()
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.y = direction.y* SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.y = move_toward(velocity.y, 0, SPEED)
-
+	
+	rotate_object_local(Vector3(1, 0, 0), deg_to_rad(input_dir.y * TURN_SPEED) * delta)
+	rotate_object_local(Vector3(0, 0, 01), deg_to_rad(input_dir.x * TURN_SPEED) * delta)
+	
+	
 	move_and_slide()
