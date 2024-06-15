@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://5iqes8wiuhe2"]
+[gd_scene load_steps=8 format=3 uid="uid://5iqes8wiuhe2"]
 
 [ext_resource type="Script" path="res://Scripts/Ship.gd" id="1_u6088"]
+[ext_resource type="CameraAttributesPractical" uid="uid://vrdy7lnq7npj" path="res://resources/camera_attributes_practical.tres" id="2_ags5c"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5ugkw"]
 
@@ -51,3 +52,4 @@ transform = Transform3D(0.872684, -0.216376, 0.437727, -0.488286, -0.386716, 0.7
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ce48m")
+camera_attributes = ExtResource("2_ags5c")
