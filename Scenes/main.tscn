@@ -11,7 +11,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_aspub"]
 size = Vector3(9.91797, 0.180664, 9.88696)
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node3D"]
 
 [node name="Ship" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68218, 0)
@@ -20,24 +20,24 @@ script = ExtResource("1_u6088")
 [node name="Collision" type="CollisionShape3D" parent="Ship"]
 shape = SubResource("CapsuleShape3D_5ugkw")
 
-[node name="MeshInstance" type="MeshInstance3D" parent="Ship"]
+[node name="Mesh" type="MeshInstance3D" parent="Ship"]
 mesh = SubResource("CapsuleMesh_3bine")
 
-[node name="Marker3D" type="Marker3D" parent="Ship"]
+[node name="Marker" type="Marker3D" parent="Ship"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.527154, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Ship/Marker3D"]
+[node name="Camera" type="Camera3D" parent="Ship/Marker"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78522, 2.96355)
 fov = 84.375
 
-[node name="StaticBody" type="StaticBody3D" parent="."]
+[node name="Platform" type="StaticBody3D" parent="."]
 
-[node name="MeshInstance" type="MeshInstance3D" parent="StaticBody"]
+[node name="Mesh" type="MeshInstance3D" parent="Platform"]
 transform = Transform3D(5, 0, 0, 0, 0.1, 0, 0, 0, 5, 0, 0, 0)
 mesh = SubResource("PlaneMesh_3f0jj")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="StaticBody"]
+[node name="Collider" type="CollisionShape3D" parent="Platform"]
 shape = SubResource("BoxShape3D_aspub")
 
-[node name="DirectionalLight" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.224577, -0.974456, 0, 0.974456, 0.224577, 0, 3.638, -8.69546)
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.872684, -0.216376, 0.437727, -0.488286, -0.386716, 0.782322, 0, -0.896455, -0.443134, 0, 3.638, -8.69546)
