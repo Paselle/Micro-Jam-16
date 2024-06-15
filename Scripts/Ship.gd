@@ -8,8 +8,8 @@ const JUMP_VELOCITY = 4.5
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 # Get the player camera
-@onready var main_camera := $Marker3D/Camera3D
-@onready var marker_3d = $Marker3D
+@onready var main_camera := $Marker/Camera
+@onready var marker_3d = $Marker
 
 
 # Make the camera variables
@@ -49,14 +49,6 @@ func camera_look(movement: Vector2) -> void:
 	marker_3d.rotate_object_local(Vector3.RIGHT, -camera_rotation.y)
 
 func _physics_process(delta):
-	# Add the gravity.
-	if not is_on_floor():
-		
-		velocity.y -= gravity * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
