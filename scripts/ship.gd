@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 
 const ACCEL = 5.0
+const MAX_SPEED = 500.0
 const TURN_SPEED = 100.0
 const JUMP_VELOCITY = 4.5
 
@@ -26,34 +27,13 @@ func _input(event) -> void:
 	# If escape is pressed reveal the mouse
 	if event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	
-	# Get the mouse movement
-	if event is InputEventMouseMotion:
-		# Get how much the mouse has moved and pass it onto the camera_look function
-		var relative_position = event.relative * mouse_sensitivity
-		camera_look(relative_position)
-
-# Rotate the camera
-func camera_look(movement: Vector2) -> void:
-	# Add how much the camera has moved to the camera rotation
-	camera_rotation += movement
-	# Stop the player from making the camera go upside down by looking too far up and down
-	camera_rotation.y = clamp(camera_rotation.y, deg_to_rad(-90), deg_to_rad(90))
-
-	# Reset the transform basis
-	transform.basis = Basis()
-	marker_3d.transform.basis = Basis()
-
-	# Finally rotate the object, the player and camera needs to rotate on the x and only the camera should rotate on the y
-	rotate_object_local(Vector3.UP, -camera_rotation.x)
-	marker_3d.rotate_object_local(Vector3.RIGHT, -camera_rotation.y)
 
 func _physics_process(delta):
 	# Accelerate
 	if Input.is_action_pressed("thrust"):
-		velocity += Vector3(ACCEL, 0, 0)
+		velocity -= basis.z * ACCEL * delta
 	elif Input.is_action_pressed("brake"):
-		velocity -= Vector3(ACCEL, 0, 0)
+		velocity = velocity.move_toward(Vector3.ZERO, ACCEL)
 	
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	
