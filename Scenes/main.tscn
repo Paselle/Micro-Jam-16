@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://5iqes8wiuhe2"]
+[gd_scene load_steps=7 format=3 uid="uid://5iqes8wiuhe2"]
 
 [ext_resource type="Script" path="res://Scripts/Ship.gd" id="1_u6088"]
 
@@ -10,6 +10,13 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aspub"]
 size = Vector3(9.91797, 0.180664, 9.88696)
+
+[sub_resource type="Environment" id="Environment_ce48m"]
+background_mode = 1
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+glow_enabled = true
 
 [node name="Main" type="Node3D"]
 
@@ -41,3 +48,6 @@ shape = SubResource("BoxShape3D_aspub")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.872684, -0.216376, 0.437727, -0.488286, -0.386716, 0.782322, 0, -0.896455, -0.443134, 0, 3.638, -8.69546)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ce48m")
