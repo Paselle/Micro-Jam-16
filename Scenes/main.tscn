@@ -9,7 +9,7 @@
 [sub_resource type="PlaneMesh" id="PlaneMesh_3f0jj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aspub"]
-size = Vector3(1.97211, 1, 1.99377)
+size = Vector3(9.91797, 0.180664, 9.88696)
 
 [node name="Main" type="Node"]
 
@@ -37,7 +37,6 @@ transform = Transform3D(5, 0, 0, 0, 0.1, 0, 0, 0, 5, 0, 0, 0)
 mesh = SubResource("PlaneMesh_3f0jj")
 
 [node name="CollisionShape" type="CollisionShape3D" parent="StaticBody"]
-transform = Transform3D(5, 0, 0, 0, 0.1, 0, 0, 0, 5, 0, 0, 0)
 shape = SubResource("BoxShape3D_aspub")
 
 [node name="DirectionalLight" type="DirectionalLight3D" parent="."]
