@@ -8,6 +8,8 @@ const JUMP_VELOCITY = 4.5
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 # Get the player camera
+@onready var main_camera := $Marker3D/Camera3D
+@onready var marker_3d = $Marker3D
 
 
 # Make the camera variables
@@ -40,15 +42,16 @@ func camera_look(movement: Vector2) -> void:
 
 	# Reset the transform basis
 	transform.basis = Basis()
-	main_camera.transform.basis = Basis()
+	marker_3d.transform.basis = Basis()
 
 	# Finally rotate the object, the player and camera needs to rotate on the x and only the camera should rotate on the y
 	rotate_object_local(Vector3.UP, -camera_rotation.x)
-	rotate_object_local(Vector3.RIGHT, -camera_rotation.y)
+	marker_3d.rotate_object_local(Vector3.RIGHT, -camera_rotation.y)
 
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
+		
 		velocity.y -= gravity * delta
 
 	# Handle jump.
