@@ -1,32 +1,22 @@
-[gd_scene load_steps=9 format=3 uid="uid://5iqes8wiuhe2"]
+[gd_scene load_steps=10 format=3 uid="uid://5iqes8wiuhe2"]
 
 [ext_resource type="PackedScene" uid="uid://qg8wxp2hr88f" path="res://scenes/ship.tscn" id="1_wv5aa"]
 [ext_resource type="CameraAttributesPractical" uid="uid://vrdy7lnq7npj" path="res://resources/camera_attributes_practical.tres" id="2_ags5c"]
-[ext_resource type="Shader" path="res://resources/sky.gdshader" id="2_wla78"]
+[ext_resource type="Environment" uid="uid://ufhids71i36c" path="res://resources/environment.tres" id="2_fcgha"]
+[ext_resource type="PackedScene" uid="uid://cnomdmhyoe7uo" path="res://scenes/ship_interior.tscn" id="4_ihp4a"]
+[ext_resource type="PackedScene" uid="uid://c6i0epdmfjfje" path="res://scenes/player.tscn" id="4_n7aoa"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_3f0jj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aspub"]
 size = Vector3(9.91797, 0.180664, 9.88696)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jj6tk"]
-shader = ExtResource("2_wla78")
-shader_parameter/sky_color = Color(0.03, 0.05, 0.11, 1)
-shader_parameter/star_base_color = Color(0.8, 1, 0.3, 1)
-shader_parameter/star_hue_offset = 0.6
-shader_parameter/star_intensity = 0.08
-shader_parameter/star_twinkle_speed = 0.8
-shader_parameter/star_twinkle_intensity = 0.2
-shader_parameter/layer_scale = 20.0
-shader_parameter/layer_scale_step = 10.0
-shader_parameter/layers_count = 3
+[sub_resource type="World3D" id="World3D_rmndu"]
+environment = ExtResource("2_fcgha")
+camera_attributes = ExtResource("2_ags5c")
 
-[sub_resource type="Sky" id="Sky_a0t6l"]
-sky_material = SubResource("ShaderMaterial_jj6tk")
-
-[sub_resource type="Environment" id="Environment_ce48m"]
-background_mode = 2
-sky = SubResource("Sky_a0t6l")
+[sub_resource type="ViewportTexture" id="ViewportTexture_4vvy1"]
+viewport_path = NodePath("SubViewport")
 
 [node name="Main" type="Node3D"]
 
@@ -46,5 +36,30 @@ shape = SubResource("BoxShape3D_aspub")
 transform = Transform3D(0.872684, -0.216376, 0.437727, -0.488286, -0.386716, 0.782322, 0, -0.896455, -0.443134, 0, 3.638, -8.69546)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_ce48m")
+environment = ExtResource("2_fcgha")
 camera_attributes = ExtResource("2_ags5c")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+world_3d = SubResource("World3D_rmndu")
+transparent_bg = true
+handle_input_locally = false
+gui_disable_input = true
+gui_embed_subwindows = true
+render_target_update_mode = 4
+
+[node name="ShipInside" type="Node3D" parent="SubViewport"]
+
+[node name="ShipInterior" parent="SubViewport/ShipInside" instance=ExtResource("4_ihp4a")]
+
+[node name="Player" parent="SubViewport/ShipInside" instance=ExtResource("4_n7aoa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3861, 0)
+
+[node name="Sun" type="DirectionalLight3D" parent="SubViewport/ShipInside"]
+transform = Transform3D(0.872684, -0.216376, 0.437726, -0.488286, -0.386716, 0.782322, 0, -0.896455, -0.443134, 0, 3.638, -8.69546)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("ViewportTexture_4vvy1")

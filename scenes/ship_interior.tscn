@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cnomdmhyoe7uo"]
+
+[node name="ShipInterior" type="AnimatableBody3D"]
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+use_collision = true
+radius = 10.0
+radial_segments = 16
+rings = 10
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="CSGSphere3D"]
+operation = 2
+radius = 9.0
+radial_segments = 16
+rings = 10

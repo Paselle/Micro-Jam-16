@@ -1,11 +1,10 @@
-extends CharacterBody3D
+class_name Ship extends CharacterBody3D
 
 
 const ACCEL = 5.0
 const DECEL = 0.3
 const MAX_SPEED = 500.0
 const TURN_SPEED = 100.0
-const JUMP_VELOCITY = 4.5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -22,6 +21,7 @@ var mouse_sensitivity := 0.003
 func _ready() -> void:
 	# Remove the mouse from the screen and just capture its movement
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Singleton.shipping = true
 
 
 func _input(event) -> void:

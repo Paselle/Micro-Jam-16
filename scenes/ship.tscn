@@ -5,8 +5,11 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5ugkw"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3bine"]
+radial_segments = 8
+rings = 3
 
 [node name="Ship" type="CharacterBody3D"]
+motion_mode = 1
 script = ExtResource("1_jf1hk")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
