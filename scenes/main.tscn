@@ -10,10 +10,6 @@ size = Vector3(9.91797, 0.180664, 9.88696)
 
 [sub_resource type="Environment" id="Environment_ce48m"]
 background_mode = 1
-ssr_enabled = true
-ssao_enabled = true
-ssil_enabled = true
-glow_enabled = true
 
 [node name="Main" type="Node3D"]
 
