@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://5iqes8wiuhe2"]
+[gd_scene load_steps=9 format=3 uid="uid://5iqes8wiuhe2"]
 
 [ext_resource type="PackedScene" uid="uid://qg8wxp2hr88f" path="res://scenes/ship.tscn" id="1_wv5aa"]
 [ext_resource type="CameraAttributesPractical" uid="uid://vrdy7lnq7npj" path="res://resources/camera_attributes_practical.tres" id="2_ags5c"]
@@ -14,9 +14,6 @@ size = Vector3(9.91797, 0.180664, 9.88696)
 [sub_resource type="World3D" id="World3D_rmndu"]
 environment = ExtResource("2_fcgha")
 camera_attributes = ExtResource("2_ags5c")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_4vvy1"]
-viewport_path = NodePath("SubViewport")
 
 [node name="Main" type="Node3D"]
 
@@ -39,7 +36,12 @@ transform = Transform3D(0.872684, -0.216376, 0.437727, -0.488286, -0.386716, 0.7
 environment = ExtResource("2_fcgha")
 camera_attributes = ExtResource("2_ags5c")
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+own_world_3d = true
 world_3d = SubResource("World3D_rmndu")
 transparent_bg = true
 handle_input_locally = false
@@ -47,19 +49,13 @@ gui_disable_input = true
 gui_embed_subwindows = true
 render_target_update_mode = 4
 
-[node name="ShipInside" type="Node3D" parent="SubViewport"]
+[node name="ShipInside" type="Node3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.0219, 0, 0)
 
-[node name="ShipInterior" parent="SubViewport/ShipInside" instance=ExtResource("4_ihp4a")]
+[node name="ShipInterior" parent="SubViewportContainer/SubViewport/ShipInside" instance=ExtResource("4_ihp4a")]
 
-[node name="Player" parent="SubViewport/ShipInside" instance=ExtResource("4_n7aoa")]
+[node name="Player" parent="SubViewportContainer/SubViewport/ShipInside" instance=ExtResource("4_n7aoa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3861, 0)
 
-[node name="Sun" type="DirectionalLight3D" parent="SubViewport/ShipInside"]
+[node name="Sun" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport/ShipInside"]
 transform = Transform3D(0.872684, -0.216376, 0.437726, -0.488286, -0.386716, 0.782322, 0, -0.896455, -0.443134, 0, 3.638, -8.69546)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = SubResource("ViewportTexture_4vvy1")

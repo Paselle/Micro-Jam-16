@@ -23,4 +23,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.527154, 0)
 
 [node name="Camera" type="Camera3D" parent="Marker"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+current = true
 fov = 84.375
