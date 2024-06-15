@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 
 const ACCEL = 5.0
+const DECEL = 0.3
 const MAX_SPEED = 500.0
 const TURN_SPEED = 100.0
 const JUMP_VELOCITY = 4.5
@@ -33,7 +34,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("thrust"):
 		velocity -= basis.z * ACCEL * delta
 	elif Input.is_action_pressed("brake"):
-		velocity = velocity.move_toward(Vector3.ZERO, ACCEL)
+		velocity = velocity.move_toward(Vector3.ZERO, DECEL)
 	
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	
