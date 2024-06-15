@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://qg8wxp2hr88f"]
+
+[ext_resource type="Script" path="res://scripts/ship.gd" id="1_jf1hk"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5ugkw"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3bine"]
+
+[node name="Ship" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68218, 0)
+script = ExtResource("1_jf1hk")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_5ugkw")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_3bine")
+
+[node name="Marker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.527154, 0)
+
+[node name="Camera" type="Camera3D" parent="Marker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78522, 2.96355)
+fov = 84.375

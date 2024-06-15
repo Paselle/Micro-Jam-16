@@ -1,11 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://5iqes8wiuhe2"]
+[gd_scene load_steps=6 format=3 uid="uid://5iqes8wiuhe2"]
 
-[ext_resource type="Script" path="res://Scripts/Ship.gd" id="1_u6088"]
+[ext_resource type="PackedScene" uid="uid://qg8wxp2hr88f" path="res://scenes/ship.tscn" id="1_wv5aa"]
 [ext_resource type="CameraAttributesPractical" uid="uid://vrdy7lnq7npj" path="res://resources/camera_attributes_practical.tres" id="2_ags5c"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5ugkw"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_3bine"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_3f0jj"]
 
@@ -21,22 +17,7 @@ glow_enabled = true
 
 [node name="Main" type="Node3D"]
 
-[node name="Ship" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68218, 0)
-script = ExtResource("1_u6088")
-
-[node name="Collision" type="CollisionShape3D" parent="Ship"]
-shape = SubResource("CapsuleShape3D_5ugkw")
-
-[node name="Mesh" type="MeshInstance3D" parent="Ship"]
-mesh = SubResource("CapsuleMesh_3bine")
-
-[node name="Marker" type="Marker3D" parent="Ship"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.527154, 0)
-
-[node name="Camera" type="Camera3D" parent="Ship/Marker"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78522, 2.96355)
-fov = 84.375
+[node name="Ship" parent="." instance=ExtResource("1_wv5aa")]
 
 [node name="Platform" type="StaticBody3D" parent="."]
 
