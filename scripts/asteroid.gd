@@ -23,6 +23,5 @@ func _physics_process(delta):
 
 
 func _on_timer_timeout():
-	print(global_position.distance_squared_to(Singleton.ship.global_position))
-	if global_position.distance_squared_to(Singleton.ship.global_position) > 100:
-		print("far away")
+	if global_position.distance_squared_to(Singleton.ship.global_position) > 300000:
+		queue_free()

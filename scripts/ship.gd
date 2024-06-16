@@ -64,7 +64,7 @@ func _physics_process(delta):
 		var input_dir = Input.get_vector("left", "right", "forward", "backward")
 		
 		rotate_object_local(Vector3(1, 0, 0), deg_to_rad(input_dir.y * TURN_SPEED) * delta)
-		rotate_object_local(Vector3(0, 0, 01), deg_to_rad(input_dir.x * TURN_SPEED) * delta)
+		rotate_object_local(Vector3(0, 0, 1), deg_to_rad(input_dir.x * TURN_SPEED) * delta)
 	
 	move_and_slide()
 	

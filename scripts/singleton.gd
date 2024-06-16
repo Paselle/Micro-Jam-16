@@ -13,7 +13,7 @@ var resource_couter: ResourceCounter
 var breaks := 0
 var integrity_bar: ProgressBar
 var losing_animation: AnimationPlayer
-var ship := Ship
+var ship: Ship
 
 
 func _ready():
