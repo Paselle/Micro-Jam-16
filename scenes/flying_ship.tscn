@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://d1q1yu73bo2po"]
+[gd_scene load_steps=7 format=3 uid="uid://d1q1yu73bo2po"]
 
 [ext_resource type="PackedScene" uid="uid://qg8wxp2hr88f" path="res://scenes/ship.tscn" id="1_qlyx3"]
 [ext_resource type="Environment" uid="uid://ufhids71i36c" path="res://resources/environment.tres" id="2_7t50k"]
@@ -6,7 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://dlpmk8ejnlc2e" path="res://scenes/asteroid.tscn" id="4_huen3"]
 [ext_resource type="PackedScene" uid="uid://cc83vuvb6kn4q" path="res://scenes/scrap.tscn" id="5_im3ue"]
 
+[sub_resource type="GDScript" id="GDScript_1e08p"]
+script/source = "extends Node3D
+
+
+func _enter_tree():
+	Singleton.flying_ship_root = self
+"
+
 [node name="FlyingShip" type="Node3D"]
+script = SubResource("GDScript_1e08p")
 
 [node name="Ship" parent="." instance=ExtResource("1_qlyx3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://qg8wxp2hr88f"]
+[gd_scene load_steps=20 format=3 uid="uid://qg8wxp2hr88f"]
 
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_jf1hk"]
 [ext_resource type="SphereMesh" uid="uid://hoiqsgg5erix" path="res://resources/thruster_particle.tres" id="2_y2hxf"]
 [ext_resource type="Script" path="res://scripts/ScrapSpawn.gd" id="3_hhhjo"]
+[ext_resource type="Script" path="res://scripts/AsteroidSpawn.gd" id="4_cn7ov"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8ciex"]
 points = PackedVector3Array(20.9431, -7.25371, -2.13056, 20.9431, -9.25349, -2.13056, 18.6102, -7.25371, -10.1829, 2.34933, 6.53175, -15.7835, 2.34933, 6.53175, -9.18366, 7.0152, 0.998976, 27.4662, 20.3404, -8.7379, 22.782, 18.6102, -9.25349, -10.1829, 20.3404, -10.7377, 22.782, 19.7377, -10.7377, -0.53179, 5.68268, 1.12914, -18.6398, 4.00166, 3.8744, -17.4163, -2.35343, 6.53175, -15.7835, -2.35343, 6.53175, -9.18366, 6.07219, 0.998976, 31.1511, -18.6143, -9.25349, -10.1829, 9.86474, -4.7113, -15.8614, 6.07219, -1.0008, 31.1511, -20.3445, -10.7377, 22.782, -19.7418, -10.7377, -0.53179, 5.68268, -1.0008, -18.0305, -5.68678, 1.12914, -18.6398, -4.00576, 3.8744, -17.4163, -18.6143, -7.25371, -10.1829, -20.9431, -7.25371, -2.13056, -7.0193, 0.998976, 27.4662, -6.07629, 0.998976, 31.1511, -20.9431, -9.25349, -2.13056, -9.86884, -4.7113, -15.8614, -6.07629, -1.0008, 31.1511, -20.3445, -8.7379, 22.782, -5.68678, -1.0008, -18.0305)
@@ -93,7 +94,11 @@ shadow_mesh = SubResource("ArrayMesh_t0pl0")
 
 [sub_resource type="Curve" id="Curve_dv841"]
 max_value = 10.0
-_data = [Vector2(0, 2.74725), 0.0, 0.0, 0, 0, Vector2(1, 10), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 10), 0.0, 0.0, 0, 0, Vector2(1, 5.05494), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_r77m5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.230769), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="Ship" type="CharacterBody3D"]
@@ -145,4 +150,10 @@ autostart = true
 script = ExtResource("3_hhhjo")
 curve = SubResource("Curve_dv841")
 
+[node name="AsteroidSpawn" type="Timer" parent="."]
+autostart = true
+script = ExtResource("4_cn7ov")
+curve = SubResource("Curve_r77m5")
+
 [connection signal="timeout" from="ScrapSpawn" to="ScrapSpawn" method="_on_timeout"]
+[connection signal="timeout" from="AsteroidSpawn" to="AsteroidSpawn" method="_on_timeout"]

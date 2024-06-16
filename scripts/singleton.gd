@@ -14,6 +14,7 @@ var breaks := 0
 var integrity_bar: ProgressBar
 var losing_animation: AnimationPlayer
 var ship: Ship
+var flying_ship_root: Node3D
 
 
 func _ready():

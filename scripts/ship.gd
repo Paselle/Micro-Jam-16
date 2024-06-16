@@ -2,7 +2,7 @@ class_name Ship extends CharacterBody3D
 
 
 const ACCEL = 15.0
-const DECEL = 0.4
+const DECEL = 1.0
 const MAX_SPEED = 500.0
 const TURN_SPEED = 100.0
 const CRASH_VELOCITY = 20.0
