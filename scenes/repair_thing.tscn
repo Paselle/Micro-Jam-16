@@ -127,17 +127,17 @@ nodes/vertex/14/node = SubResource("VisualShaderNodeFloatOp_jhw8h")
 nodes/vertex/14/position = Vector2(-15.3212, 471.767)
 nodes/vertex/connections = PackedInt32Array(4, 0, 6, 1, 5, 0, 8, 0, 8, 0, 10, 0, 8, 1, 6, 0, 8, 2, 11, 0, 6, 0, 9, 1, 9, 0, 0, 0, 12, 0, 4, 2, 4, 0, 13, 0, 13, 0, 10, 1, 4, 0, 14, 1, 14, 0, 11, 1, 11, 0, 9, 2, 10, 0, 9, 0)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_42yxu"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gqerm"]
 noise_type = 0
-seed = 8
+seed = 8505
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_y2tht"]
-noise = SubResource("FastNoiseLite_42yxu")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g8duk"]
+noise = SubResource("FastNoiseLite_gqerm")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wfm5a"]
 render_priority = 0
 shader = SubResource("VisualShader_bwh6h")
-shader_parameter/NoiseTexture = SubResource("NoiseTexture2D_y2tht")
+shader_parameter/NoiseTexture = SubResource("NoiseTexture2D_g8duk")
 
 [sub_resource type="SphereMesh" id="SphereMesh_jk70d"]
 material = SubResource("ShaderMaterial_wfm5a")
