@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cnomdmhyoe7uo"]
+[gd_scene load_steps=25 format=3 uid="uid://cnomdmhyoe7uo"]
 
 [ext_resource type="Script" path="res://scripts/ShipDisplay.gd" id="1_78wp7"]
 [ext_resource type="CameraAttributesPractical" uid="uid://vrdy7lnq7npj" path="res://resources/camera_attributes_practical.tres" id="1_b5p84"]
@@ -7,8 +7,26 @@
 [ext_resource type="PackedScene" uid="uid://d1q1yu73bo2po" path="res://scenes/flying_ship.tscn" id="3_ceceb"]
 [ext_resource type="Script" path="res://scripts/LookAtArea.gd" id="5_nj16p"]
 [ext_resource type="PackedScene" uid="uid://x1xj8kbuxkcp" path="res://scenes/repair_socket.tscn" id="6_ib7j6"]
+[ext_resource type="Material" uid="uid://b1e68sqvn5c1a" path="res://resources/inner_ship_material.tres" id="7_826ug"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_d3tpl"]
+
+[sub_resource type="Gradient" id="Gradient_uo6c8"]
+colors = PackedColorArray(0.76662, 0.76662, 0.766619, 1, 0.194349, 0.194349, 0.194349, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wkf7d"]
+noise_type = 4
+seed = 6
+frequency = 0.0018
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6gnqb"]
+seamless = true
+color_ramp = SubResource("Gradient_uo6c8")
+noise = SubResource("FastNoiseLite_wkf7d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6gs4x"]
+albedo_texture = SubResource("NoiseTexture2D_6gnqb")
 
 [sub_resource type="World3D" id="World3D_dcb4e"]
 environment = ExtResource("2_bry72")
@@ -21,6 +39,40 @@ viewport_path = NodePath("Floor0/ShipDisplay/ShipWorld")
 radius = 0.498793
 height = 2.01253
 
+[sub_resource type="Gradient" id="Gradient_qeeca"]
+colors = PackedColorArray(0.76662, 0.76662, 0.766619, 1, 0.194349, 0.194349, 0.194349, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wgy6i"]
+noise_type = 4
+seed = 6
+frequency = 0.0018
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ba3qf"]
+seamless = true
+color_ramp = SubResource("Gradient_qeeca")
+noise = SubResource("FastNoiseLite_wgy6i")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i7ubl"]
+albedo_texture = SubResource("NoiseTexture2D_ba3qf")
+
+[sub_resource type="Gradient" id="Gradient_lqc7r"]
+colors = PackedColorArray(0.76662, 0.76662, 0.766619, 1, 0.194349, 0.194349, 0.194349, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_e2h86"]
+noise_type = 4
+seed = 10
+frequency = 0.0018
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_72dhm"]
+seamless = true
+color_ramp = SubResource("Gradient_lqc7r")
+noise = SubResource("FastNoiseLite_e2h86")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4jwj3"]
+albedo_texture = SubResource("NoiseTexture2D_72dhm")
+
 [node name="ShipInterior" type="AnimatableBody3D"]
 
 [node name="ClearWarning" type="CollisionShape3D" parent="."]
@@ -32,17 +84,20 @@ use_collision = true
 radius = 10.0
 radial_segments = 16
 rings = 10
+material = ExtResource("7_826ug")
 
 [node name="HullInterior" type="CSGSphere3D" parent="Hull"]
 operation = 2
 radius = 9.0
 radial_segments = 16
 rings = 10
+material = ExtResource("7_826ug")
 
 [node name="Floor0" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.11749, 0)
 use_collision = true
 size = Vector3(18.821, 0.25, 18.271)
+material = SubResource("StandardMaterial3D_6gs4x")
 
 [node name="Light0" type="OmniLight3D" parent="Floor0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50556, 0)
@@ -74,6 +129,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
 [node name="CSGBox3D" type="CSGBox3D" parent="Floor0/Terminal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.675703, 0)
 size = Vector3(0.133423, 1.26074, 0.467041)
+material = ExtResource("7_826ug")
 
 [node name="Sprite3D" type="Sprite3D" parent="Floor0/Terminal"]
 transform = Transform3D(-3.25342e-09, 0, 0.184788, 0, 0.184788, 0, -0.184788, 0, -3.25342e-09, 0.0756974, 1.29479, 0)
@@ -111,14 +167,17 @@ transform = Transform3D(0.995592, 0.00278904, -0.0937522, 0.0936622, -0.0824511,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125, 0)
 use_collision = true
 size = Vector3(18.821, 0.25, 18.271)
+material = SubResource("StandardMaterial3D_i7ubl")
 
 [node name="Stairs" parent="Floor1" instance=ExtResource("1_myw0f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.88, 7.66824)
+material = ExtResource("7_826ug")
 
 [node name="Stairway" type="CSGBox3D" parent="Floor1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.89439, 0, 6.4636)
 operation = 2
 size = Vector3(4.63914, 0.25, 2.4)
+material = ExtResource("7_826ug")
 
 [node name="Light1" type="OmniLight3D" parent="Floor1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56691, 0)
@@ -151,14 +210,17 @@ transform = Transform3D(0.838137, 0.537285, 0.0940882, 0.120866, -0.35114, 0.928
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.88, 0)
 use_collision = true
 size = Vector3(18.821, 0.25, 18.271)
+material = SubResource("StandardMaterial3D_4jwj3")
 
 [node name="Stairs" parent="Floor2" instance=ExtResource("1_myw0f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.88, -5)
+material = ExtResource("7_826ug")
 
 [node name="Stairway" type="CSGBox3D" parent="Floor2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.60363, 0, -6.20594)
 operation = 2
 size = Vector3(5.19918, 0.25, 2.4)
+material = ExtResource("7_826ug")
 
 [node name="Light2" type="OmniLight3D" parent="Floor2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.93252, 0)

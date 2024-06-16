@@ -34,8 +34,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.0547, 0, -24.2479)
 [node name="Scrap" parent="." instance=ExtResource("5_im3ue")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.059499, 0, -25.0367)
 
-[node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
+[node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.963947, 0.266095, 0, -0.266095, 0.963947, 0, 10.5492, 17.3821)
 current = true
 script = ExtResource("6_ec5nn")
-target = NodePath("")

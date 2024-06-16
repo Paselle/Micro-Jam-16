@@ -104,13 +104,11 @@ autostart = true
 layer = 5
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -666.0
-offset_right = 10368.0
-offset_bottom = 5166.0
+offset_bottom = -666.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 0, 1, 1)
