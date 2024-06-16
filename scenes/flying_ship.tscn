@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1q1yu73bo2po"]
+[gd_scene load_steps=6 format=3 uid="uid://d1q1yu73bo2po"]
 
 [ext_resource type="PackedScene" uid="uid://qg8wxp2hr88f" path="res://scenes/ship.tscn" id="1_qlyx3"]
 [ext_resource type="Environment" uid="uid://ufhids71i36c" path="res://resources/environment.tres" id="2_7t50k"]
 [ext_resource type="CameraAttributesPractical" uid="uid://vrdy7lnq7npj" path="res://resources/camera_attributes_practical.tres" id="3_dgcbb"]
 [ext_resource type="PackedScene" uid="uid://dlpmk8ejnlc2e" path="res://scenes/asteroid.tscn" id="4_huen3"]
+[ext_resource type="PackedScene" uid="uid://cc83vuvb6kn4q" path="res://scenes/scrap.tscn" id="5_im3ue"]
 
 [node name="FlyingShip" type="Node3D"]
 
@@ -19,3 +20,6 @@ camera_attributes = ExtResource("3_dgcbb")
 
 [node name="Asteroid" parent="." instance=ExtResource("4_huen3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.0547, 0, -24.2479)
+
+[node name="Scrap" parent="." instance=ExtResource("5_im3ue")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.059499, 0, -25.0367)
