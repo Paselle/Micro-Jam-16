@@ -1,0 +1,5 @@
+[gd_resource type="FastNoiseLite" format=3 uid="uid://dbjauxv2b7v87"]
+
+[resource]
+noise_type = 0
+seed = 8
