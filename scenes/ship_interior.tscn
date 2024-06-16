@@ -107,6 +107,9 @@ omni_range = 13.4615
 [node name="RepairThing" parent="Floor1" instance=ExtResource("7_x2ajt")]
 transform = Transform3D(0.952199, -0.264553, -0.15274, -0.0552025, 0.342751, -0.937803, 0.30045, 0.901406, 0.311764, 0.409259, -2.91957, -8.32798)
 
+[node name="RepairThing2" parent="Floor1" instance=ExtResource("7_x2ajt")]
+transform = Transform3D(0.982411, -0.102284, -0.156225, 0.0952325, 0.994097, -0.0519911, 0.160621, 0.036199, 0.986352, 0.428106, -3.77796, -5.82536)
+
 [node name="Floor2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.88, 0)
 use_collision = true
