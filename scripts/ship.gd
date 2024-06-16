@@ -1,11 +1,11 @@
 class_name Ship extends CharacterBody3D
 
 
-const ACCEL = 5.0
-const DECEL = 0.3
+const ACCEL = 15.0
+const DECEL = 0.4
 const MAX_SPEED = 500.0
 const TURN_SPEED = 100.0
-const CRASH_VELOCITY = 10.0
+const CRASH_VELOCITY = 20.0
 const REBOUND_SPEED = 30.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.

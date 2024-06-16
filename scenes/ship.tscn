@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://qg8wxp2hr88f"]
+[gd_scene load_steps=18 format=3 uid="uid://qg8wxp2hr88f"]
 
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_jf1hk"]
+[ext_resource type="SphereMesh" uid="uid://hoiqsgg5erix" path="res://resources/thruster_particle.tres" id="2_y2hxf"]
 [ext_resource type="Script" path="res://scripts/ScrapSpawn.gd" id="3_hhhjo"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8ciex"]
@@ -23,15 +24,6 @@ emission_ring_radius = 1.0
 emission_ring_inner_radius = 0.0
 gravity = Vector3(0, 0, 10)
 hue_variation_curve = SubResource("CurveTexture_ilvba")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_erkxg"]
-shading_mode = 0
-albedo_color = Color(0.112788, 0.560886, 0.902486, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_cncom"]
-material = SubResource("StandardMaterial3D_erkxg")
-radial_segments = 4
-rings = 2
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_iv24d"]
 
@@ -124,20 +116,19 @@ shape = SubResource("ConvexPolygonShape3D_8ciex")
 [node name="ThrustersL" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.06472, -2.97558, 21.1123)
 emitting = false
-amount = 30
+amount = 100
 lifetime = 2.5
-trail_lifetime = 1.2
 process_material = SubResource("ParticleProcessMaterial_8kwu6")
-draw_pass_1 = SubResource("SphereMesh_cncom")
+draw_pass_1 = ExtResource("2_y2hxf")
 
 [node name="ThrustersR" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.32667, -2.81794, 21.7326)
 emitting = false
-amount = 30
+amount = 100
 lifetime = 2.5
 trail_lifetime = 1.2
 process_material = SubResource("ParticleProcessMaterial_8kwu6")
-draw_pass_1 = SubResource("SphereMesh_cncom")
+draw_pass_1 = ExtResource("2_y2hxf")
 
 [node name="space_ship_scifi2" type="Node3D" parent="."]
 transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0.683307, 15.1993)
@@ -152,3 +143,5 @@ skeleton = NodePath("")
 wait_time = 10.0
 script = ExtResource("3_hhhjo")
 curve = SubResource("Curve_dv841")
+
+[connection signal="timeout" from="ScrapSpawn" to="ScrapSpawn" method="_on_timeout"]
