@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6i0epdmfjfje"]
+[gd_scene load_steps=5 format=3 uid="uid://c6i0epdmfjfje"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_jjtsk"]
+[ext_resource type="Script" path="res://scripts/resource_counter.gd" id="2_tqsih"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_wcvvq"]
 radial_segments = 8
@@ -46,3 +47,4 @@ max_value = 5.0
 offset_right = 532.0
 offset_bottom = 205.0
 text = "Resources: "
+script = ExtResource("2_tqsih")

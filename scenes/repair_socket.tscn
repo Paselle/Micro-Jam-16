@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://x1xj8kbuxkcp"]
+
+[node name="RepairSocket" type="Marker3D" groups=["repair_socket"]]

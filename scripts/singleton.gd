@@ -1,12 +1,19 @@
 extends Node
 
 
+const REPAIR_THING = preload("res://scenes/repair_thing.tscn")
+
 # Global variables
 var shipping := true
 var ship_display: SubViewportContainer
 var switch_cooldown: Timer
 var resources := 10
 var damage_curve: Node
+var resource_couter: ResourceCounter
+
+
+func _ready():
+	resource_couter.text = resource_couter.initial_text + str(resources)
 
 
 func switch_shipping() -> void:
@@ -21,7 +28,18 @@ func switch_shipping() -> void:
 
 func decrease_resources() -> void:
 	resources -= 1
+	resource_couter.text = resource_couter.initial_text + str(resources)
+
+
+func increase_resources() -> void:
+	resources += 1
+	resource_couter.text = resource_couter.initial_text + str(resources)
 
 
 func generate_damage() -> void:
-	pass
+	var repair_socket = get_tree().get_nodes_in_group("repair_socket").pick_random() as Marker3D
+	var new_repair_thing = REPAIR_THING.instantiate()
+	get_tree().root.add_child(new_repair_thing)
+	print(new_repair_thing.global_basis,"   ",repair_socket.global_basis)
+	new_repair_thing.global_basis = repair_socket.global_basis
+	print(new_repair_thing.global_basis,"   ",repair_socket.global_basis)

@@ -6,7 +6,7 @@
 [ext_resource type="Environment" uid="uid://ufhids71i36c" path="res://resources/environment.tres" id="2_bry72"]
 [ext_resource type="PackedScene" uid="uid://d1q1yu73bo2po" path="res://scenes/flying_ship.tscn" id="3_ceceb"]
 [ext_resource type="Script" path="res://scripts/LookAtArea.gd" id="5_nj16p"]
-[ext_resource type="PackedScene" uid="uid://dvw25q1uus303" path="res://scenes/repair_thing.tscn" id="7_x2ajt"]
+[ext_resource type="PackedScene" uid="uid://x1xj8kbuxkcp" path="res://scenes/repair_socket.tscn" id="6_ib7j6"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_d3tpl"]
 
@@ -87,6 +87,26 @@ script = ExtResource("5_nj16p")
 transform = Transform3D(1.33187, 0, 0, 0, -5.82178e-08, 1.33187, 0, -1.33187, -5.82178e-08, 0, 0.244106, 0)
 shape = SubResource("CapsuleShape3D_lqvr2")
 
+[node name="RepairSockets" type="Node3D" parent="Floor0"]
+
+[node name="RepairSocket" parent="Floor0/RepairSockets" instance=ExtResource("6_ib7j6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.69924, 0.148798, -3.90361)
+
+[node name="RepairSocket2" parent="Floor0/RepairSockets" instance=ExtResource("6_ib7j6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.78803, 0.148798, -4.16134)
+
+[node name="RepairSocket3" parent="Floor0/RepairSockets" instance=ExtResource("6_ib7j6")]
+transform = Transform3D(0.977231, 0.174037, -0.121372, 0.0553539, 0.343103, 0.937665, 0.204832, -0.923034, 0.325657, -2.66983, 1.1488, 7.91025)
+
+[node name="RepairSocket4" parent="Floor0/RepairSockets" instance=ExtResource("6_ib7j6")]
+transform = Transform3D(-0.195553, 0.969386, -0.148495, 0.0765691, 0.166048, 0.983141, 0.9777, 0.180886, -0.106696, -8.45013, 2.09441, -1.15328)
+
+[node name="RepairSocket5" parent="Floor0/RepairSockets" instance=ExtResource("6_ib7j6")]
+transform = Transform3D(0.142703, -0.945301, 0.29333, 0.0883612, 0.307347, 0.947486, -0.985814, -0.10929, 0.127387, 8.02886, 1.11154, 2.17945)
+
+[node name="RepairSocket6" parent="Floor0/RepairSockets" instance=ExtResource("6_ib7j6")]
+transform = Transform3D(0.995592, 0.00278904, -0.0937522, 0.0936622, -0.0824511, 0.992184, -0.00496279, -0.996591, -0.0823491, 0.898178, 1.11154, 5.26414)
+
 [node name="Floor1" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125, 0)
 use_collision = true
@@ -104,11 +124,28 @@ size = Vector3(4.63914, 0.25, 2.4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56691, 0)
 omni_range = 13.4615
 
-[node name="RepairThing" parent="Floor1" instance=ExtResource("7_x2ajt")]
-transform = Transform3D(0.952199, -0.264553, -0.15274, -0.0552025, 0.342751, -0.937803, 0.30045, 0.901406, 0.311764, 0.409259, -2.91957, -8.32798)
+[node name="RepairSockets" type="Node3D" parent="Floor1"]
 
-[node name="RepairThing2" parent="Floor1" instance=ExtResource("7_x2ajt")]
-transform = Transform3D(0.982411, -0.102284, -0.156225, 0.0952325, 0.994097, -0.0519911, 0.160621, 0.036199, 0.986352, 0.428106, -3.77796, -5.82536)
+[node name="RepairSocket" parent="Floor1/RepairSockets" instance=ExtResource("6_ib7j6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.938464, 0.148798, -2.14927)
+
+[node name="RepairSocket2" parent="Floor1/RepairSockets" instance=ExtResource("6_ib7j6")]
+transform = Transform3D(0.0523221, -0.998569, -0.0110984, 0.0520398, 0.013825, -0.998549, 0.997273, 0.0516686, 0.0526886, -0.107194, 2.57667, -6.45158)
+
+[node name="RepairSocket3" parent="Floor1/RepairSockets" instance=ExtResource("6_ib7j6")]
+transform = Transform3D(0.762771, -0.608048, -0.22013, 0.150346, -0.16433, 0.97488, -0.628948, -0.776706, -0.0339286, 6.07707, 1.67817, 6.13736)
+
+[node name="RepairSocket4" parent="Floor1/RepairSockets" instance=ExtResource("6_ib7j6")]
+transform = Transform3D(-0.937338, 0.277173, 0.211126, 0.108654, -0.343201, 0.932957, 0.331049, 0.897434, 0.291579, -4.83527, 2.09441, -6.91416)
+
+[node name="RepairSocket5" parent="Floor1/RepairSockets" instance=ExtResource("6_ib7j6")]
+transform = Transform3D(-0.207111, -0.966628, -0.150784, 0.200961, -0.192875, 0.960424, -0.957455, 0.168612, 0.234201, 8.47239, 1.11154, -1.79809)
+
+[node name="RepairSocket6" parent="Floor1/RepairSockets" instance=ExtResource("6_ib7j6")]
+transform = Transform3D(0.995695, 0.00377946, -0.0926187, -0.00617659, 0.999653, -0.0256092, 0.0924897, 0.0260712, 0.995372, 2.97453, 0.142093, 4.55375)
+
+[node name="RepairSocket7" parent="Floor1/RepairSockets" instance=ExtResource("6_ib7j6")]
+transform = Transform3D(0.838137, 0.537285, 0.0940882, 0.120866, -0.35114, 0.92849, 0.531902, -0.766829, -0.359243, -4.87291, 1.58053, 7.04265)
 
 [node name="Floor2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.88, 0)
@@ -126,3 +163,14 @@ size = Vector3(5.19918, 0.25, 2.4)
 [node name="Light2" type="OmniLight3D" parent="Floor2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.93252, 0)
 omni_range = 13.4615
+
+[node name="RepairSockets" type="Node3D" parent="Floor2"]
+
+[node name="RepairSocket" parent="Floor2/RepairSockets" instance=ExtResource("6_ib7j6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.81726, 0.148798, 2.02171)
+
+[node name="RepairSocket2" parent="Floor2/RepairSockets" instance=ExtResource("6_ib7j6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.80166, 0.148798, -0.740061)
+
+[node name="RepairSocket3" parent="Floor2/RepairSockets" instance=ExtResource("6_ib7j6")]
+transform = Transform3D(0.917042, -0.325305, -0.230678, 0.0869847, -0.401347, 0.911787, -0.38919, -0.856211, -0.339755, 0.898178, 1.11154, 7.16891)
