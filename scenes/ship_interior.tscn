@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnomdmhyoe7uo"]
+[gd_scene load_steps=11 format=3 uid="uid://cnomdmhyoe7uo"]
 
 [ext_resource type="Script" path="res://scripts/ShipDisplay.gd" id="1_78wp7"]
 [ext_resource type="CameraAttributesPractical" uid="uid://vrdy7lnq7npj" path="res://resources/camera_attributes_practical.tres" id="1_b5p84"]
 [ext_resource type="PackedScene" uid="uid://da0a64xq6f0v7" path="res://scenes/stairs.tscn" id="1_myw0f"]
 [ext_resource type="Environment" uid="uid://ufhids71i36c" path="res://resources/environment.tres" id="2_bry72"]
 [ext_resource type="PackedScene" uid="uid://b0lt0vahptcd1" path="res://scenes/flying_ship.tscn" id="3_ceceb"]
+[ext_resource type="Script" path="res://scripts/LookAtArea.gd" id="5_nj16p"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_d3tpl"]
 
@@ -79,6 +80,7 @@ texture = SubResource("ViewportTexture_e4n6l")
 
 [node name="LookAtArea" type="Area3D" parent="Floor0/Terminal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02894, 0)
+script = ExtResource("5_nj16p")
 
 [node name="Collider" type="CollisionShape3D" parent="Floor0/Terminal/LookAtArea"]
 transform = Transform3D(1.33187, 0, 0, 0, -5.82178e-08, 1.33187, 0, -1.33187, -5.82178e-08, 0, 0.244106, 0)

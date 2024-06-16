@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvw25q1uus303"]
+
+[ext_resource type="Shader" uid="uid://dptvgtg2coutt" path="res://resources/repair_thing.tres" id="1_tfihj"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f65w7"]
+radius = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mcyja"]
+render_priority = 0
+shader = ExtResource("1_tfihj")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_34141"]
+subdivide_width = 8
+subdivide_depth = 8
+
+[node name="RepairThing" type="Area3D"]
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_f65w7")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_mcyja")
+mesh = SubResource("PlaneMesh_34141")

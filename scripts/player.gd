@@ -58,7 +58,7 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 	
 	if not Singleton.shipping:
-		if screen_detector.is_colliding() and Input.is_action_just_pressed("switch"):
+		if screen_detector.get_collider() is LookAtArea and Input.is_action_just_pressed("switch"):
 			Singleton.switch_shipping()
 		
 		# Handle jump.
