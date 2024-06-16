@@ -25,7 +25,7 @@ gravity = Vector3(0, 0, 10)
 hue_variation_curve = SubResource("CurveTexture_ilvba")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_erkxg"]
-albedo_color = Color(0.975775, 0.192616, 0, 1)
+albedo_color = Color(0.224276, 0.398013, 0.893395, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_cncom"]
 material = SubResource("StandardMaterial3D_erkxg")
@@ -47,11 +47,11 @@ fov = 84.375
 [node name="space_ship_scifi2" parent="." instance=ExtResource("2_ff3dj")]
 transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_8ciex")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+[node name="Trail" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.70429, -3.65889, 6.07846)
 amount = 30
 lifetime = 2.5
