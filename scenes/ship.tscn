@@ -38,7 +38,6 @@ initial_velocity_min = 10.0
 initial_velocity_max = 10.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ggq4"]
-heightmap_enabled = true
 use_particle_trails = true
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_x4p3h"]
