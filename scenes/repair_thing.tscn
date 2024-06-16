@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://pyt6pd4ssx1l" path="res://resources/noise_texture_2d.tres" id="3_h6xbf"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_f65w7"]
-radius = 1.0
+radius = 0.597337
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cnkns"]
 render_priority = 0
