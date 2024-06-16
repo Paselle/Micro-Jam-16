@@ -105,6 +105,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56691, 0)
 omni_range = 13.4615
 
 [node name="RepairThing" parent="Floor1" instance=ExtResource("7_x2ajt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12719, 0)
 
 [node name="Floor2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.88, 0)

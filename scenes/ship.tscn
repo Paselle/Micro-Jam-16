@@ -3,22 +3,24 @@
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_jf1hk"]
 [ext_resource type="PackedScene" uid="uid://o4fjauvo1cgk" path="res://resources/space_ship_scifi2.glb" id="2_ff3dj"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5ugkw"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8ciex"]
+points = PackedVector3Array(20.9431, -7.25371, -2.13056, 20.9431, -9.25349, -2.13056, 18.6102, -7.25371, -10.1829, 2.34933, 6.53175, -15.7835, 2.34933, 6.53175, -9.18366, 7.0152, 0.998976, 27.4662, 20.3404, -8.7379, 22.782, 18.6102, -9.25349, -10.1829, 20.3404, -10.7377, 22.782, 19.7377, -10.7377, -0.53179, 5.68268, 1.12914, -18.6398, 4.00166, 3.8744, -17.4163, -2.35343, 6.53175, -15.7835, -2.35343, 6.53175, -9.18366, 6.07219, 0.998976, 31.1511, -18.6143, -9.25349, -10.1829, 9.86474, -4.7113, -15.8614, 6.07219, -1.0008, 31.1511, -20.3445, -10.7377, 22.782, -19.7418, -10.7377, -0.53179, 5.68268, -1.0008, -18.0305, -5.68678, 1.12914, -18.6398, -4.00576, 3.8744, -17.4163, -18.6143, -7.25371, -10.1829, -20.9431, -7.25371, -2.13056, -7.0193, 0.998976, 27.4662, -6.07629, 0.998976, 31.1511, -20.9431, -9.25349, -2.13056, -9.86884, -4.7113, -15.8614, -6.07629, -1.0008, 31.1511, -20.3445, -8.7379, 22.782, -5.68678, -1.0008, -18.0305)
 
 [node name="Ship" type="CharacterBody3D"]
 motion_mode = 1
 script = ExtResource("1_jf1hk")
 
-[node name="Collision" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_5ugkw")
-
 [node name="Marker" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.527154, 0)
 
 [node name="Camera" type="Camera3D" parent="Marker"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.3949, 30)
+transform = Transform3D(1, 0, 0, 0, 0.963947, 0.266095, 0, -0.266095, 0.963947, 0, 10.5492, 17.3821)
 current = true
 fov = 84.375
 
 [node name="space_ship_scifi2" parent="." instance=ExtResource("2_ff3dj")]
 transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_8ciex")

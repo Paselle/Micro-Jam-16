@@ -12,8 +12,9 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var screen_detector = $ScreenDetector
 
 # Make the camera variables
-var camera_rotation = Vector2(0, 0)
+var camera_rotation := Vector2(0, 0)
 var mouse_sensitivity := 0.002
+var looking_at_repair := false
 
 
 func _ready() -> void:
@@ -60,6 +61,8 @@ func _physics_process(delta):
 	if not Singleton.shipping:
 		if screen_detector.get_collider() is LookAtArea and Input.is_action_just_pressed("switch"):
 			Singleton.switch_shipping()
+		
+		
 		
 		# Handle jump.
 		if Input.is_action_just_pressed("jump") and is_on_floor():
