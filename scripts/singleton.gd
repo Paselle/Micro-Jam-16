@@ -10,6 +10,10 @@ var switch_cooldown: Timer
 var resources := 10
 var damage_curve: Node
 var resource_couter: ResourceCounter
+var breaks := 0
+var integrity_bar: ProgressBar
+var losing_animation: AnimationPlayer
+var ship := Ship
 
 
 func _ready():
@@ -37,9 +41,17 @@ func increase_resources() -> void:
 
 
 func generate_damage() -> void:
+	breaks += 1
+	if breaks > integrity_bar.max_value:
+		losing_animation.play("losing")
+	integrity_bar.value = integrity_bar.max_value - breaks
 	var repair_socket = get_tree().get_nodes_in_group("repair_socket").pick_random() as Marker3D
 	var new_repair_thing = REPAIR_THING.instantiate()
 	get_tree().root.add_child(new_repair_thing)
-	print(new_repair_thing.global_basis,"   ",repair_socket.global_basis)
-	new_repair_thing.global_basis = repair_socket.global_basis
-	print(new_repair_thing.global_basis,"   ",repair_socket.global_basis)
+	new_repair_thing.global_position = repair_socket.global_position
+	new_repair_thing.rotation = repair_socket.rotation
+
+
+func damage_removed() -> void:
+	breaks -= 1
+	integrity_bar.value = integrity_bar.max_value - breaks

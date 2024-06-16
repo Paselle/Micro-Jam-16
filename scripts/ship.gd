@@ -26,6 +26,10 @@ var camera_rotation = Vector2(0, 0)
 var mouse_sensitivity := 0.003
 
 
+func _enter_tree():
+	Singleton.ship = self
+
+
 func _ready() -> void:
 	# Remove the mouse from the screen and just capture its movement
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

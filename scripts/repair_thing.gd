@@ -18,4 +18,5 @@ func _ready():
 
 func repair() -> void:
 	Singleton.decrease_resources()
+	Singleton.damage_removed()
 	queue_free()

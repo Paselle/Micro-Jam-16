@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6i0epdmfjfje"]
+[gd_scene load_steps=6 format=3 uid="uid://c6i0epdmfjfje"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_jjtsk"]
 [ext_resource type="Script" path="res://scripts/resource_counter.gd" id="2_tqsih"]
+[ext_resource type="Script" path="res://scripts/IntegrityBar.gd" id="3_djih7"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_wcvvq"]
 radial_segments = 8
@@ -44,7 +45,23 @@ grow_vertical = 2
 max_value = 5.0
 
 [node name="Resources" type="RichTextLabel" parent="CanvasLayer"]
-offset_right = 532.0
-offset_bottom = 205.0
+offset_top = 21.0
+offset_right = 319.0
+offset_bottom = 54.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Resources: "
 script = ExtResource("2_tqsih")
+
+[node name="IntegrityBar" type="ProgressBar" parent="CanvasLayer"]
+offset_left = 109.0
+offset_right = 223.0
+offset_bottom = 27.0
+max_value = 20.0
+value = 20.0
+script = ExtResource("3_djih7")
+
+[node name="HullIntegrity" type="RichTextLabel" parent="CanvasLayer"]
+offset_right = 135.0
+offset_bottom = 24.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Hull Integrity: "

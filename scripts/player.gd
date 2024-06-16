@@ -64,7 +64,7 @@ func _physics_process(delta):
 		if detected_collider is LookAtArea and Input.is_action_just_pressed("switch"):
 			Singleton.switch_shipping()
 		
-		elif detected_collider is RepairThing and Input.is_action_pressed("switch"):
+		elif detected_collider is RepairThing and Input.is_action_pressed("switch") and Singleton.resources > 0:
 			holding_repair += delta
 			if holding_repair > progress_bar.max_value:
 				detected_collider.repair()

@@ -69,3 +69,5 @@ draw_pass_1 = SubResource("SphereMesh_cncom")
 
 [node name="space_ship_scifi2" parent="." instance=ExtResource("2_ff3dj")]
 transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0.683307, 15.1993)
+
+[node name="Node3D" type="Node3D" parent="."]

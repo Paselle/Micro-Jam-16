@@ -20,3 +20,9 @@ func _ready():
 func _physics_process(delta):
 	rotate(spin_axis, spin_speed * delta)
 	move_and_collide(direction * speed * delta)
+
+
+func _on_timer_timeout():
+	print(global_position.distance_squared_to(Singleton.ship.global_position))
+	if global_position.distance_squared_to(Singleton.ship.global_position) > 100:
+		print("far away")
