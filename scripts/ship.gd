@@ -21,7 +21,6 @@ var mouse_sensitivity := 0.003
 func _ready() -> void:
 	# Remove the mouse from the screen and just capture its movement
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	Singleton.shipping = true
 
 
 func _input(event) -> void:
@@ -30,16 +29,19 @@ func _input(event) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _physics_process(delta):
+	if Input.is_action_just_pressed("switch"):
+		Singleton.shipping = not Singleton.shipping
+	
 	# Accelerate
-	if Input.is_action_pressed("thrust"):
-		velocity -= basis.z * ACCEL * delta
-	elif Input.is_action_pressed("brake"):
-		velocity = velocity.move_toward(Vector3.ZERO, DECEL)
-	
-	var input_dir = Input.get_vector("left", "right", "forward", "backward")
-	
-	rotate_object_local(Vector3(1, 0, 0), deg_to_rad(input_dir.y * TURN_SPEED) * delta)
-	rotate_object_local(Vector3(0, 0, 01), deg_to_rad(input_dir.x * TURN_SPEED) * delta)
-	
+	if Singleton.shipping:
+		if Input.is_action_pressed("thrust"):
+			velocity -= basis.z * ACCEL * delta
+		elif Input.is_action_pressed("brake"):
+			velocity = velocity.move_toward(Vector3.ZERO, DECEL)
+		
+		var input_dir = Input.get_vector("left", "right", "forward", "backward")
+		
+		rotate_object_local(Vector3(1, 0, 0), deg_to_rad(input_dir.y * TURN_SPEED) * delta)
+		rotate_object_local(Vector3(0, 0, 01), deg_to_rad(input_dir.x * TURN_SPEED) * delta)
 	
 	move_and_slide()

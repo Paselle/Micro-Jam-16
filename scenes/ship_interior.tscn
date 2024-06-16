@@ -1,15 +1,54 @@
-[gd_scene format=3 uid="uid://cnomdmhyoe7uo"]
+[gd_scene load_steps=3 format=3 uid="uid://cnomdmhyoe7uo"]
+
+[ext_resource type="PackedScene" uid="uid://da0a64xq6f0v7" path="res://scenes/stairs.tscn" id="1_myw0f"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_d3tpl"]
 
 [node name="ShipInterior" type="AnimatableBody3D"]
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+[node name="ClearWarning" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+shape = SubResource("WorldBoundaryShape3D_d3tpl")
+
+[node name="Hull" type="CSGSphere3D" parent="."]
 use_collision = true
 radius = 10.0
 radial_segments = 16
 rings = 10
 
-[node name="CSGSphere3D2" type="CSGSphere3D" parent="CSGSphere3D"]
+[node name="HullInterior" type="CSGSphere3D" parent="Hull"]
 operation = 2
 radius = 9.0
 radial_segments = 16
 rings = 10
+
+[node name="Floor1" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125, 0)
+use_collision = true
+size = Vector3(18.821, 0.25, 18.271)
+
+[node name="Stairs" parent="Floor1" instance=ExtResource("1_myw0f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.88, 7.66824)
+
+[node name="Stairway" type="CSGBox3D" parent="Floor1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.31504, 0, 6.4636)
+operation = 2
+size = Vector3(4.622, 0.25, 2.4)
+
+[node name="Floor2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.88, 0)
+use_collision = true
+size = Vector3(18.821, 0.25, 18.271)
+
+[node name="Stairs" parent="Floor2" instance=ExtResource("1_myw0f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.88, -5)
+
+[node name="Stairway" type="CSGBox3D" parent="Floor2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.31504, 0, -6.20594)
+operation = 2
+size = Vector3(4.622, 0.25, 2.4)
+
+[node name="Floor3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.11749, 0)
+use_collision = true
+size = Vector3(18.821, 0.25, 18.271)
