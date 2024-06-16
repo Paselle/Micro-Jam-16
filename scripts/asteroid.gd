@@ -23,5 +23,5 @@ func _physics_process(delta):
 
 
 func _on_timer_timeout():
-	if global_position.distance_squared_to(Singleton.ship.global_position) > 300000:
+	if global_position.distance_squared_to(Singleton.ship.global_position) > 500000:
 		queue_free()

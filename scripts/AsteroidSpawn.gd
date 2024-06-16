@@ -2,7 +2,7 @@ extends Timer
 
 
 const ASTEROID = preload("res://scenes/asteroid.tscn")
-const SPAWN_DISTANCE = 1000
+const SPAWN_DISTANCE = 1500
 
 @export var curve: Curve
 var current_index := 0.0

@@ -22,4 +22,4 @@ func _on_timer_timeout():
 		timer.wait_time = curve.sample_baked(1)
 	else:
 		timer.wait_time = curve.sample_baked(current_index)
-		current_index += 0.03
+		current_index += 1
