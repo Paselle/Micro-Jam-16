@@ -1,9 +1,86 @@
-[gd_resource type="VisualShader" format=3 uid="uid://dptvgtg2coutt"]
+[gd_resource type="VisualShader" load_steps=10 format=3 uid="uid://dptvgtg2coutt"]
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_10xf3"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_kiwhx"]
+operator = 2
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ppfrb"]
+noise_type = 0
+seed = 138
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pnnlx"]
+width = 256
+height = 256
+seamless = true
+noise = SubResource("FastNoiseLite_ppfrb")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_jhcja"]
+output_port_for_preview = 0
+texture = SubResource("NoiseTexture2D_pnnlx")
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_xk3kk"]
+input_name = "vertex"
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_sea8h"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_5cxam"]
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_klsdu"]
 
 [resource]
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
 
+uniform sampler2D tex_vtx_4;
 
 
+
+void vertex() {
+// Input:5
+	vec3 n_out5p0 = VERTEX;
+
+
+// VectorDecompose:8
+	float n_out8p0 = n_out5p0.x;
+	float n_out8p1 = n_out5p0.y;
+	float n_out8p2 = n_out5p0.z;
+
+
+// Texture2D:4
+	vec4 n_out4p0 = texture(tex_vtx_4, UV);
+
+
+// FloatOp:6
+	float n_out6p0 = n_out8p1 * n_out4p0.x;
+
+
+// VectorCompose:9
+	vec3 n_out9p0 = vec3(n_out8p0, n_out6p0, n_out8p2);
+
+
+// Output:0
+	VERTEX = n_out9p0;
+
+
+}
 "
+graph_offset = Vector2(-685.962, 65.2132)
+nodes/vertex/0/position = Vector2(940, 80)
+nodes/vertex/4/node = SubResource("VisualShaderNodeTexture_jhcja")
+nodes/vertex/4/position = Vector2(-300, 180)
+nodes/vertex/5/node = SubResource("VisualShaderNodeInput_xk3kk")
+nodes/vertex/5/position = Vector2(-340, 80)
+nodes/vertex/6/node = SubResource("VisualShaderNodeFloatOp_sea8h")
+nodes/vertex/6/position = Vector2(180, 300)
+nodes/vertex/8/node = SubResource("VisualShaderNodeVectorDecompose_5cxam")
+nodes/vertex/8/position = Vector2(-20, 40)
+nodes/vertex/9/node = SubResource("VisualShaderNodeVectorCompose_klsdu")
+nodes/vertex/9/position = Vector2(480, 180)
+nodes/vertex/10/node = SubResource("VisualShaderNodeFloatOp_10xf3")
+nodes/vertex/10/position = Vector2(180, 180)
+nodes/vertex/11/node = SubResource("VisualShaderNodeFloatOp_kiwhx")
+nodes/vertex/11/position = Vector2(180, 420)
+nodes/vertex/connections = PackedInt32Array(4, 0, 6, 1, 5, 0, 8, 0, 4, 0, 11, 1, 4, 0, 10, 1, 8, 0, 10, 0, 8, 1, 6, 0, 8, 2, 11, 0, 6, 0, 9, 1, 9, 0, 0, 0, 8, 0, 9, 0, 8, 2, 9, 2)

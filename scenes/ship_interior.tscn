@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cnomdmhyoe7uo"]
+[gd_scene load_steps=12 format=3 uid="uid://cnomdmhyoe7uo"]
 
 [ext_resource type="Script" path="res://scripts/ShipDisplay.gd" id="1_78wp7"]
 [ext_resource type="CameraAttributesPractical" uid="uid://vrdy7lnq7npj" path="res://resources/camera_attributes_practical.tres" id="1_b5p84"]
@@ -6,6 +6,7 @@
 [ext_resource type="Environment" uid="uid://ufhids71i36c" path="res://resources/environment.tres" id="2_bry72"]
 [ext_resource type="PackedScene" uid="uid://b0lt0vahptcd1" path="res://scenes/flying_ship.tscn" id="3_ceceb"]
 [ext_resource type="Script" path="res://scripts/LookAtArea.gd" id="5_nj16p"]
+[ext_resource type="PackedScene" uid="uid://dvw25q1uus303" path="res://scenes/repair_thing.tscn" id="7_x2ajt"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_d3tpl"]
 
@@ -95,13 +96,15 @@ size = Vector3(18.821, 0.25, 18.271)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.88, 7.66824)
 
 [node name="Stairway" type="CSGBox3D" parent="Floor1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.31504, 0, 6.4636)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.89439, 0, 6.4636)
 operation = 2
-size = Vector3(4.622, 0.25, 2.4)
+size = Vector3(4.63914, 0.25, 2.4)
 
 [node name="Light1" type="OmniLight3D" parent="Floor1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56691, 0)
 omni_range = 13.4615
+
+[node name="RepairThing" parent="Floor1" instance=ExtResource("7_x2ajt")]
 
 [node name="Floor2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.88, 0)
@@ -112,9 +115,9 @@ size = Vector3(18.821, 0.25, 18.271)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.88, -5)
 
 [node name="Stairway" type="CSGBox3D" parent="Floor2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.31504, 0, -6.20594)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.60363, 0, -6.20594)
 operation = 2
-size = Vector3(4.622, 0.25, 2.4)
+size = Vector3(5.19918, 0.25, 2.4)
 
 [node name="Light2" type="OmniLight3D" parent="Floor2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.93252, 0)
