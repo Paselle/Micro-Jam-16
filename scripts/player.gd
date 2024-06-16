@@ -9,12 +9,13 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 # Get the player camera
 @onready var main_camera := $Camera
-@onready var screen_detector = $ScreenDetector
+@onready var progress_bar = $CanvasLayer/ProgressBar
+@onready var screen_detector = $Camera/ScreenDetector
 
 # Make the camera variables
 var camera_rotation := Vector2(0, 0)
 var mouse_sensitivity := 0.002
-var looking_at_repair := false
+var holding_repair := 0.0
 
 
 func _ready() -> void:
@@ -59,10 +60,16 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 	
 	if not Singleton.shipping:
-		if screen_detector.get_collider() is LookAtArea and Input.is_action_just_pressed("switch"):
+		var detected_collider = screen_detector.get_collider()
+		if detected_collider is LookAtArea and Input.is_action_just_pressed("switch"):
 			Singleton.switch_shipping()
 		
-		
+		elif detected_collider is RepairThing and Input.is_action_pressed("switch"):
+			holding_repair += delta
+			if holding_repair > progress_bar.max_value:
+				detected_collider.repair()
+		else:
+			holding_repair = 0
 		
 		# Handle jump.
 		if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -84,3 +91,11 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
 	move_and_slide()
+
+
+func _process(delta):
+	if holding_repair:
+		progress_bar.visible = true
+		progress_bar.value = holding_repair
+	else:
+		progress_bar.visible = false

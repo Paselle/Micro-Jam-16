@@ -11,3 +11,7 @@ func _ready():
 	new_noise_texture.noise.seed = randi_range(0, 10000)
 	mesh.mesh.material.set_shader_parameter("NoiseTexture", new_noise_texture)
 
+
+func repair() -> void:
+	Singleton.decrease_resources()
+	queue_free()
