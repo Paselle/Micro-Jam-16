@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://qg8wxp2hr88f"]
+[gd_scene load_steps=12 format=3 uid="uid://qg8wxp2hr88f"]
 
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_jf1hk"]
 [ext_resource type="PackedScene" uid="uid://o4fjauvo1cgk" path="res://resources/space_ship_scifi2.glb" id="2_ff3dj"]
@@ -32,10 +32,17 @@ material = SubResource("StandardMaterial3D_erkxg")
 radial_segments = 4
 rings = 2
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ijd65"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rcglk"]
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
 
-[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_8sfw8"]
-size = 1.13
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ggq4"]
+heightmap_enabled = true
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_x4p3h"]
+material = SubResource("StandardMaterial3D_4ggq4")
 
 [node name="Ship" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.846909, -5.60183)
@@ -54,18 +61,29 @@ fov = 84.375
 transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0.683307, 15.1993)
 shape = SubResource("ConvexPolygonShape3D_8ciex")
 
-[node name="Thrusters" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.70429, -2.97558, 20.2777)
+[node name="ThrustersL" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.06472, -2.97558, 21.1123)
 amount = 30
 lifetime = 2.5
 trail_lifetime = 1.2
 process_material = SubResource("ParticleProcessMaterial_8kwu6")
 draw_pass_1 = SubResource("SphereMesh_cncom")
 
-[node name="Trail" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9542, 12.2485, 6.19927)
-process_material = SubResource("ParticleProcessMaterial_ijd65")
-draw_pass_1 = SubResource("RibbonTrailMesh_8sfw8")
+[node name="ThrustersR" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.32667, -2.81794, 21.7326)
+emitting = false
+amount = 30
+lifetime = 2.5
+trail_lifetime = 1.2
+process_material = SubResource("ParticleProcessMaterial_8kwu6")
+draw_pass_1 = SubResource("SphereMesh_cncom")
 
 [node name="space_ship_scifi2" parent="." instance=ExtResource("2_ff3dj")]
 transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0.683307, 15.1993)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2285, 6.69506, 0)
+trail_enabled = true
+trail_lifetime = 0.8
+process_material = SubResource("ParticleProcessMaterial_rcglk")
+draw_pass_1 = SubResource("RibbonTrailMesh_x4p3h")

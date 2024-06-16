@@ -12,7 +12,10 @@ const REBOUND_SPEED = 30.0
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 # Get thruster particles
-@onready var thrusters = $Thrusters
+@onready var thrusters_l = $ThrustersL
+@onready var thrusters_r = $ThrustersR
+
+
 
 # Get the player camera
 @onready var main_camera := $Marker/Camera
@@ -36,7 +39,8 @@ func _input(event) -> void:
 func _physics_process(delta):
 	
 	# Thruster particles direction
-	thrusters.process_material.direction = -velocity.normalized()
+	thrusters_l.process_material.direction = -velocity.normalized()
+	thrusters_r.process_material.direction = -velocity.normalized()
 	
 	if Singleton.shipping:
 		if Input.is_action_just_pressed("switch"):
@@ -45,8 +49,13 @@ func _physics_process(delta):
 		# Accelerate
 		if Input.is_action_pressed("thrust"):
 			velocity -= basis.z * ACCEL * delta
-		elif Input.is_action_pressed("brake"):
-			velocity = velocity.move_toward(Vector3.ZERO, DECEL)
+			thrusters_l.emitting = true
+			thrusters_r.emitting = true	
+		else:
+			thrusters_l.emitting = false
+			thrusters_r.emitting = false	
+			if	Input.is_action_pressed("brake"):
+				velocity = velocity.move_toward(Vector3.ZERO, DECEL)
 		
 		var input_dir = Input.get_vector("left", "right", "forward", "backward")
 		
