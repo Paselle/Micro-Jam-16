@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://qg8wxp2hr88f"]
+[gd_scene load_steps=9 format=3 uid="uid://qg8wxp2hr88f"]
 
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_jf1hk"]
 [ext_resource type="PackedScene" uid="uid://o4fjauvo1cgk" path="res://resources/space_ship_scifi2.glb" id="2_ff3dj"]
@@ -6,15 +6,13 @@
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8ciex"]
 points = PackedVector3Array(20.9431, -7.25371, -2.13056, 20.9431, -9.25349, -2.13056, 18.6102, -7.25371, -10.1829, 2.34933, 6.53175, -15.7835, 2.34933, 6.53175, -9.18366, 7.0152, 0.998976, 27.4662, 20.3404, -8.7379, 22.782, 18.6102, -9.25349, -10.1829, 20.3404, -10.7377, 22.782, 19.7377, -10.7377, -0.53179, 5.68268, 1.12914, -18.6398, 4.00166, 3.8744, -17.4163, -2.35343, 6.53175, -15.7835, -2.35343, 6.53175, -9.18366, 6.07219, 0.998976, 31.1511, -18.6143, -9.25349, -10.1829, 9.86474, -4.7113, -15.8614, 6.07219, -1.0008, 31.1511, -20.3445, -10.7377, 22.782, -19.7418, -10.7377, -0.53179, 5.68268, -1.0008, -18.0305, -5.68678, 1.12914, -18.6398, -4.00576, 3.8744, -17.4163, -18.6143, -7.25371, -10.1829, -20.9431, -7.25371, -2.13056, -7.0193, 0.998976, 27.4662, -6.07629, 0.998976, 31.1511, -20.9431, -9.25349, -2.13056, -9.86884, -4.7113, -15.8614, -6.07629, -1.0008, 31.1511, -20.3445, -8.7379, 22.782, -5.68678, -1.0008, -18.0305)
 
-[sub_resource type="Gradient" id="Gradient_j5x42"]
+[sub_resource type="Curve" id="Curve_ovgxq"]
+min_value = -1.0
+_data = [Vector2(0.00724638, 0.340659), 0.0, 0.0, 0, 0, Vector2(0.318841, -1), 0.0, 0.0, 0, 0, Vector2(1, 0.0989012), 0.0, 0.0, 0, 0]
+point_count = 3
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_52f3n"]
-gradient = SubResource("Gradient_j5x42")
-
-[sub_resource type="Gradient" id="Gradient_4623j"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_nqbv0"]
-gradient = SubResource("Gradient_4623j")
+[sub_resource type="CurveTexture" id="CurveTexture_ilvba"]
+curve = SubResource("Curve_ovgxq")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8kwu6"]
 emission_shape_scale = Vector3(0.5, 0.5, 0)
@@ -24,11 +22,15 @@ emission_ring_height = 1.0
 emission_ring_radius = 1.0
 emission_ring_inner_radius = 0.0
 gravity = Vector3(0, 0, 10)
-color = Color(1, 0, 0, 1)
-color_ramp = SubResource("GradientTexture1D_nqbv0")
-color_initial_ramp = SubResource("GradientTexture1D_52f3n")
+hue_variation_curve = SubResource("CurveTexture_ilvba")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_erkxg"]
+albedo_color = Color(0.224276, 0.398013, 0.893395, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_cncom"]
+material = SubResource("StandardMaterial3D_erkxg")
+radial_segments = 4
+rings = 2
 
 [node name="Ship" type="CharacterBody3D"]
 motion_mode = 1
