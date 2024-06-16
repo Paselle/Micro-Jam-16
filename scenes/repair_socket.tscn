@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://x1xj8kbuxkcp"]
+
+[ext_resource type="PackedScene" uid="uid://dvw25q1uus303" path="res://scenes/repair_thing.tscn" id="1_1ww35"]
+
+[node name="RepairSocket" type="Marker3D" groups=["rapair_socket"]]
+
+[node name="RepairThing" parent="." instance=ExtResource("1_1ww35")]

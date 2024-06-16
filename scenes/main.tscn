@@ -6,8 +6,8 @@
 [ext_resource type="Script" path="res://scripts/DamageGeneration.gd" id="4_uepwm"]
 
 [sub_resource type="Curve" id="Curve_i5ar2"]
-max_value = 30.0
-_data = [Vector2(0, 30), 0.0, 0.0, 0, 0, Vector2(1, 6.48352), 0.0, 0.0, 0, 0]
+max_value = 60.0
+_data = [Vector2(0, 60), 0.0, 0.0, 0, 0, Vector2(1, 15.8242), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="ShipInside" type="Node3D"]
