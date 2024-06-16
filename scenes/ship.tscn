@@ -109,11 +109,6 @@ script = ExtResource("1_jf1hk")
 [node name="Marker" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21046, 20.1993)
 
-[node name="Camera" type="Camera3D" parent="Marker"]
-transform = Transform3D(1, 0, 0, 0, 0.963947, 0.266095, 0, -0.266095, 0.963947, 0, 10.5492, 17.3821)
-current = true
-fov = 84.375
-
 [node name="CameraMarker" type="Marker3D" parent="Marker"]
 transform = Transform3D(1, 0, 0, 0, 0.963947, 0.266095, 0, -0.266095, 0.963947, 0, 10.5492, 17.3821)
 

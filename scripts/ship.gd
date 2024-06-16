@@ -16,7 +16,6 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var thrusters_r = $ThrustersR
 
 # Get the player camera
-@onready var main_camera := $Marker/Camera
 @onready var marker_3d = $Marker
 @onready var camera_marker = $Marker/CameraMarker
 

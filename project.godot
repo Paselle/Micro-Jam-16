@@ -23,6 +23,10 @@ Singleton="*res://scripts/singleton.gd"
 
 window/stretch/mode="viewport"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/interpolated_camera_3d/plugin.cfg")
+
 [input]
 
 forward={
