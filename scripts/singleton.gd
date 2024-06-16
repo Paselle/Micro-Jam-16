@@ -9,6 +9,11 @@ var ship_display: SubViewportContainer
 var switch_cooldown: Timer
 var resources := 10
 var damage_curve: Node
+var resource_couter: ResourceCounter
+
+
+func _ready():
+	resource_couter.text = resource_couter.initial_text + str(resources)
 
 
 func switch_shipping() -> void:
@@ -23,6 +28,12 @@ func switch_shipping() -> void:
 
 func decrease_resources() -> void:
 	resources -= 1
+	resource_couter.text = resource_couter.initial_text + str(resources)
+
+
+func increase_resources() -> void:
+	resources += 1
+	resource_couter.text = resource_couter.initial_text + str(resources)
 
 
 func generate_damage() -> void:
