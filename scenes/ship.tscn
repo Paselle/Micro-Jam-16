@@ -140,7 +140,8 @@ skeleton = NodePath("")
 [node name="Node3D" type="Node3D" parent="."]
 
 [node name="ScrapSpawn" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 5.0
+autostart = true
 script = ExtResource("3_hhhjo")
 curve = SubResource("Curve_dv841")
 
