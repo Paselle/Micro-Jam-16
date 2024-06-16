@@ -17,8 +17,8 @@ func _ready():
 
 func _on_timer_timeout():
 	Singleton.generate_damage()
-	if current_index >= curve.point_count:
-		timer.wait_time = curve.sample_baked(curve.point_count - 1)
+	if current_index >= 1:
+		timer.wait_time = curve.sample_baked(1)
 	else:
 		timer.wait_time = curve.sample_baked(current_index)
-		current_index += 1
+		current_index += 0.01
