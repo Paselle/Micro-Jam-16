@@ -6,6 +6,7 @@ var shipping := true
 var ship_display: SubViewportContainer
 var switch_cooldown: Timer
 var resources := 10
+var damage_curve: Node
 
 
 func switch_shipping() -> void:
@@ -20,3 +21,7 @@ func switch_shipping() -> void:
 
 func decrease_resources() -> void:
 	resources -= 1
+
+
+func generate_damage() -> void:
+	pass
