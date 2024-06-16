@@ -29,11 +29,11 @@ func _input(event) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed("switch"):
-		Singleton.shipping = not Singleton.shipping
-	
-	# Accelerate
 	if Singleton.shipping:
+		if Input.is_action_just_pressed("switch"):
+			Singleton.switch_shipping()
+		
+		# Accelerate
 		if Input.is_action_pressed("thrust"):
 			velocity -= basis.z * ACCEL * delta
 		elif Input.is_action_pressed("brake"):

@@ -9,6 +9,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 # Get the player camera
 @onready var main_camera := $Camera
+@onready var screen_detector = $ScreenDetector
 
 # Make the camera variables
 var camera_rotation = Vector2(0, 0)
@@ -28,11 +29,12 @@ func _input(event) -> void:
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
-	# Get the mouse movement
-	if event is InputEventMouseMotion:
-		# Get how much the mouse has moved and pass it onto the camera_look function
-		var relative_position = event.relative * mouse_sensitivity
-		camera_look(relative_position)
+	if not Singleton.shipping:
+		# Get the mouse movement
+		if event is InputEventMouseMotion:
+			# Get how much the mouse has moved and pass it onto the camera_look function
+			var relative_position = event.relative * mouse_sensitivity
+			camera_look(relative_position)
 
 # Rotate the camera
 func camera_look(movement: Vector2) -> void:
@@ -56,6 +58,9 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 	
 	if not Singleton.shipping:
+		if screen_detector.is_colliding() and Input.is_action_just_pressed("switch"):
+			Singleton.switch_shipping()
+		
 		# Handle jump.
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = JUMP_VELOCITY

@@ -1,70 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://vt6x2w0dqiis"]
+[gd_scene load_steps=4 format=3 uid="uid://vt6x2w0dqiis"]
 
-[ext_resource type="PackedScene" uid="uid://qg8wxp2hr88f" path="res://scenes/ship.tscn" id="1_wv5aa"]
-[ext_resource type="CameraAttributesPractical" uid="uid://vrdy7lnq7npj" path="res://resources/camera_attributes_practical.tres" id="2_ags5c"]
-[ext_resource type="Environment" uid="uid://ufhids71i36c" path="res://resources/environment.tres" id="2_fcgha"]
+[ext_resource type="Script" path="res://scripts/SwitchCooldown.gd" id="3_14u31"]
 [ext_resource type="PackedScene" uid="uid://cnomdmhyoe7uo" path="res://scenes/ship_interior.tscn" id="4_ihp4a"]
 [ext_resource type="PackedScene" uid="uid://c6i0epdmfjfje" path="res://scenes/player.tscn" id="4_n7aoa"]
-
-[sub_resource type="World3D" id="World3D_rmndu"]
-environment = ExtResource("2_fcgha")
-camera_attributes = ExtResource("2_ags5c")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_3f0jj"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_aspub"]
-size = Vector3(9.91797, 0.180664, 9.88696)
 
 [node name="ShipInside" type="Node3D"]
 
 [node name="ShipInterior" parent="." instance=ExtResource("4_ihp4a")]
 
 [node name="Player" parent="." instance=ExtResource("4_n7aoa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3861, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -2.59103, 0)
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-offset_right = 512.0
-offset_bottom = 512.0
-
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
-own_world_3d = true
-world_3d = SubResource("World3D_rmndu")
-transparent_bg = true
-handle_input_locally = false
-gui_disable_input = true
-gui_embed_subwindows = true
-render_target_update_mode = 4
-
-[node name="Main" type="Node3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.0219, 0, 0)
-
-[node name="Ship" parent="SubViewportContainer/SubViewport/Main" instance=ExtResource("1_wv5aa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-
-[node name="Platform" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Main"]
-
-[node name="Mesh" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Main/Platform"]
-transform = Transform3D(5, 0, 0, 0, 0.1, 0, 0, 0, 5, 0, 0, 0)
-mesh = SubResource("PlaneMesh_3f0jj")
-
-[node name="Collider" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Main/Platform"]
-shape = SubResource("BoxShape3D_aspub")
-
-[node name="Sun" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport/Main"]
-transform = Transform3D(0.872684, -0.216376, 0.437727, -0.488286, -0.386716, 0.782322, 0, -0.896455, -0.443134, 0, 3.638, -8.69546)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport/Main"]
-environment = ExtResource("2_fcgha")
-camera_attributes = ExtResource("2_ags5c")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.44191, 0)
-omni_range = 13.4615
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.81252, 0)
-omni_range = 13.4615
-
-[node name="OmniLight3D3" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.61193, 0)
-omni_range = 13.4615
+[node name="SwitchCooldown" type="Timer" parent="."]
+one_shot = true
+script = ExtResource("3_14u31")
