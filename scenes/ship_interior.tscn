@@ -4,7 +4,7 @@
 [ext_resource type="CameraAttributesPractical" uid="uid://vrdy7lnq7npj" path="res://resources/camera_attributes_practical.tres" id="1_b5p84"]
 [ext_resource type="PackedScene" uid="uid://da0a64xq6f0v7" path="res://scenes/stairs.tscn" id="1_myw0f"]
 [ext_resource type="Environment" uid="uid://ufhids71i36c" path="res://resources/environment.tres" id="2_bry72"]
-[ext_resource type="PackedScene" uid="uid://b0lt0vahptcd1" path="res://scenes/flying_ship.tscn" id="3_ceceb"]
+[ext_resource type="PackedScene" uid="uid://d1q1yu73bo2po" path="res://scenes/flying_ship.tscn" id="3_ceceb"]
 [ext_resource type="Script" path="res://scripts/LookAtArea.gd" id="5_nj16p"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_d3tpl"]

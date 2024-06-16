@@ -13,7 +13,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 # Make the camera variables
 var camera_rotation = Vector2(0, 0)
-var mouse_sensitivity := 0.005
+var mouse_sensitivity := 0.002
 
 
 func _ready() -> void:

@@ -9,7 +9,7 @@
 [node name="ShipInterior" parent="." instance=ExtResource("4_ihp4a")]
 
 [node name="Player" parent="." instance=ExtResource("4_n7aoa")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -2.59103, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.97967, -2.59103, 0)
 
 [node name="SwitchCooldown" type="Timer" parent="."]
 one_shot = true

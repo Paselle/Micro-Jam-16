@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0lt0vahptcd1"]
+[gd_scene load_steps=6 format=3 uid="uid://d1q1yu73bo2po"]
 
 [ext_resource type="PackedScene" uid="uid://qg8wxp2hr88f" path="res://scenes/ship.tscn" id="1_qlyx3"]
 [ext_resource type="Environment" uid="uid://ufhids71i36c" path="res://resources/environment.tres" id="2_7t50k"]
@@ -15,6 +15,7 @@ size = Vector3(9.91797, 0.180664, 9.88696)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="Platform" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.755636, -0.654991, 0, 0.654991, 0.755636, 0, 0, -34.7844)
 
 [node name="Mesh" type="MeshInstance3D" parent="Platform"]
 transform = Transform3D(5, 0, 0, 0, 0.1, 0, 0, 0, 5, 0, 0, 0)
