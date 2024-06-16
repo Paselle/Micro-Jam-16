@@ -4,7 +4,7 @@ extends Node
 @onready var timer = $Timer
 
 @export var curve: Curve
-var current_index := 0
+var current_index := 0.0
 
 
 func _enter_tree():
