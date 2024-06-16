@@ -1,2 +1,5 @@
 # Godot 4+ specific ignores
 .godot/
+Linux Export/Linux.x86_64
+MacOS Export/MacOS.zip
+Windows Export/Windows x86_64.exe
