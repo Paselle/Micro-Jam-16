@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://qg8wxp2hr88f"]
+[gd_scene load_steps=9 format=3 uid="uid://qg8wxp2hr88f"]
 
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_jf1hk"]
 [ext_resource type="PackedScene" uid="uid://o4fjauvo1cgk" path="res://resources/space_ship_scifi2.glb" id="2_ff3dj"]
@@ -32,11 +32,6 @@ material = SubResource("StandardMaterial3D_erkxg")
 radial_segments = 4
 rings = 2
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ijd65"]
-
-[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_8sfw8"]
-size = 1.13
-
 [node name="Ship" type="CharacterBody3D"]
 motion_mode = 1
 script = ExtResource("1_jf1hk")
@@ -49,22 +44,17 @@ transform = Transform3D(1, 0, 0, 0, 0.963947, 0.266095, 0, -0.266095, 0.963947, 
 current = true
 fov = 84.375
 
-[node name="ShipModel" parent="." instance=ExtResource("2_ff3dj")]
+[node name="space_ship_scifi2" parent="." instance=ExtResource("2_ff3dj")]
 transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 0, 0, 0)
 
-[node name="Collision" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_8ciex")
 
-[node name="Thrusters" type="GPUParticles3D" parent="."]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.70429, -3.65889, 6.07846)
 amount = 30
 lifetime = 2.5
 trail_lifetime = 1.2
 process_material = SubResource("ParticleProcessMaterial_8kwu6")
 draw_pass_1 = SubResource("SphereMesh_cncom")
-
-[node name="Trail" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9542, 11.5652, 0)
-process_material = SubResource("ParticleProcessMaterial_ijd65")
-draw_pass_1 = SubResource("RibbonTrailMesh_8sfw8")

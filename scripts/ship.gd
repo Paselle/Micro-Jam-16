@@ -9,6 +9,9 @@ const TURN_SPEED = 100.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+# Get thruster particles
+@onready var thrusters = $Thrusters
+
 # Get the player camera
 @onready var main_camera := $Marker/Camera
 @onready var marker_3d = $Marker
@@ -29,6 +32,10 @@ func _input(event) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _physics_process(delta):
+	
+	# Thruster particles direction
+	thrusters.process_material.direction = -velocity.normalized()
+	
 	if Singleton.shipping:
 		if Input.is_action_just_pressed("switch"):
 			Singleton.switch_shipping()
