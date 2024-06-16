@@ -38,26 +38,24 @@ rings = 2
 size = 1.13
 
 [node name="Ship" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.846909, -5.60183)
 motion_mode = 1
 script = ExtResource("1_jf1hk")
 
 [node name="Marker" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.527154, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21046, 20.1993)
 
 [node name="Camera" type="Camera3D" parent="Marker"]
 transform = Transform3D(1, 0, 0, 0, 0.963947, 0.266095, 0, -0.266095, 0.963947, 0, 10.5492, 17.3821)
 current = true
 fov = 84.375
 
-[node name="ShipModel" parent="." instance=ExtResource("2_ff3dj")]
-transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 0, 0, 0)
-
 [node name="Collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0, 0)
+transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0.683307, 15.1993)
 shape = SubResource("ConvexPolygonShape3D_8ciex")
 
 [node name="Thrusters" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.70429, -3.65889, 6.07846)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.70429, -2.97558, 20.2777)
 amount = 30
 lifetime = 2.5
 trail_lifetime = 1.2
@@ -65,6 +63,9 @@ process_material = SubResource("ParticleProcessMaterial_8kwu6")
 draw_pass_1 = SubResource("SphereMesh_cncom")
 
 [node name="Trail" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9542, 11.5652, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9542, 12.2485, 6.19927)
 process_material = SubResource("ParticleProcessMaterial_ijd65")
 draw_pass_1 = SubResource("RibbonTrailMesh_8sfw8")
+
+[node name="space_ship_scifi2" parent="." instance=ExtResource("2_ff3dj")]
+transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0.683307, 15.1993)
