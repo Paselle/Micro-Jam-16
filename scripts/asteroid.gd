@@ -1,4 +1,4 @@
-extends AnimatableBody3D
+class_name Asteroid extends AnimatableBody3D
 
 
 var speed: float

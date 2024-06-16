@@ -5,6 +5,8 @@ const ACCEL = 5.0
 const DECEL = 0.3
 const MAX_SPEED = 500.0
 const TURN_SPEED = 100.0
+const CRASH_VELOCITY = 10.0
+const REBOUND_SPEED = 30.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -52,3 +54,8 @@ func _physics_process(delta):
 		rotate_object_local(Vector3(0, 0, 01), deg_to_rad(input_dir.x * TURN_SPEED) * delta)
 	
 	move_and_slide()
+	
+	var last_slide_collision = get_last_slide_collision()
+	if last_slide_collision and last_slide_collision.get_collider() is Asteroid and abs(velocity.length()) > CRASH_VELOCITY:
+		velocity = last_slide_collision.get_normal() * REBOUND_SPEED
+		Singleton.generate_damage()
