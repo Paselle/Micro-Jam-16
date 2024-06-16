@@ -15,6 +15,7 @@ var integrity_bar: ProgressBar
 var losing_animation: AnimationPlayer
 var ship: Ship
 var flying_ship_root: Node3D
+var audio_thing: AudioThing
 
 
 func _ready():
@@ -26,8 +27,10 @@ func switch_shipping() -> void:
 		shipping = not shipping
 		if shipping:
 			ship_display.modulate = Color.WHITE
+			switch_cooldown.ship_on.play()
 		else:
 			ship_display.modulate = Color.TRANSPARENT
+			switch_cooldown.ship_off.play()
 		switch_cooldown.start()
 
 

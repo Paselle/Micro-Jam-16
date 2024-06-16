@@ -15,11 +15,10 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var thrusters_l = $ThrustersL
 @onready var thrusters_r = $ThrustersR
 
-
-
 # Get the player camera
 @onready var main_camera := $Marker/Camera
 @onready var marker_3d = $Marker
+@onready var camera_marker = $Marker/CameraMarker
 
 # Make the camera variables
 var camera_rotation = Vector2(0, 0)
@@ -72,3 +71,6 @@ func _physics_process(delta):
 	if last_slide_collision and last_slide_collision.get_collider() is Asteroid and abs(velocity.length()) > CRASH_VELOCITY:
 		velocity = last_slide_collision.get_normal() * REBOUND_SPEED
 		Singleton.generate_damage()
+		Singleton.audio_thing.crash.play()
+	elif last_slide_collision and last_slide_collision.get_collider() is Asteroid:
+		Singleton.audio_thing.bump.play()

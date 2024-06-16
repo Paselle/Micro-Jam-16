@@ -17,6 +17,7 @@ func _ready():
 
 func _on_timer_timeout():
 	Singleton.generate_damage()
+	Singleton.audio_thing.break_sound.play()
 	print(timer.wait_time)
 	if current_index >= 1:
 		timer.wait_time = curve.sample_baked(1)

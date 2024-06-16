@@ -5,3 +5,4 @@ func _on_body_entered(body):
 	if body is Ship:
 		Singleton.increase_resources()
 		queue_free()
+		Singleton.audio_thing.item_gathered.play()

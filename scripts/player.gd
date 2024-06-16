@@ -11,6 +11,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var main_camera := $Camera
 @onready var progress_bar = $CanvasLayer/ProgressBar
 @onready var screen_detector = $Camera/ScreenDetector
+@onready var sound_cooldown = $SoundCooldown
+@onready var repair = $Repair
 
 # Make the camera variables
 var camera_rotation := Vector2(0, 0)
@@ -66,6 +68,9 @@ func _physics_process(delta):
 		
 		elif detected_collider is RepairThing and Input.is_action_pressed("switch") and Singleton.resources > 0:
 			holding_repair += delta
+			if sound_cooldown.is_stopped():
+				repair.play()
+				sound_cooldown.start()
 			if holding_repair > progress_bar.max_value:
 				detected_collider.repair()
 		else:

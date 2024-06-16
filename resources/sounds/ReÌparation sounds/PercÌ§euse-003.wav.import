@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://defkd6xwim0qk"
+path="res://.godot/imported/PercÌ§euse-003.wav-133f31c7d40f1c52e3a77df2b122b77a.sample"
+
+[deps]
+
+source_file="res://resources/sounds/ReÌparation sounds/PercÌ§euse-003.wav"
+dest_files=["res://.godot/imported/PercÌ§euse-003.wav-133f31c7d40f1c52e3a77df2b122b77a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

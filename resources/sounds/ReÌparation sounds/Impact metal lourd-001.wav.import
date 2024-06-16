@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dcnvslqpe7td2"
+path="res://.godot/imported/Impact metal lourd-001.wav-bb852034e8ec74c878d3b713b59458dc.sample"
+
+[deps]
+
+source_file="res://resources/sounds/ReÌparation sounds/Impact metal lourd-001.wav"
+dest_files=["res://.godot/imported/Impact metal lourd-001.wav-bb852034e8ec74c878d3b713b59458dc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
