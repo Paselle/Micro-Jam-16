@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ym372fo365ha"]
+[gd_scene load_steps=18 format=3 uid="uid://ym372fo365ha"]
 
 [ext_resource type="Script" path="res://scripts/SwitchCooldown.gd" id="3_14u31"]
 [ext_resource type="PackedScene" uid="uid://cnomdmhyoe7uo" path="res://scenes/ship_interior.tscn" id="4_ihp4a"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://dwshayuv2bnbg" path="res://resources/sounds/Crash.wav" id="8_65m4f"]
 [ext_resource type="AudioStream" uid="uid://bptm16lm62rb0" path="res://resources/sounds/crash.wav" id="9_80xon"]
 [ext_resource type="AudioStream" uid="uid://bx8bs1i45sk6g" path="res://resources/sounds/Item_gathered.wav" id="11_0j08h"]
+[ext_resource type="AudioStream" uid="uid://il8f7bmj0grs" path="res://resources/sounds/SpaceJourney.wav" id="13_0q258"]
 
 [sub_resource type="Curve" id="Curve_i5ar2"]
 max_value = 60.0
@@ -153,5 +154,9 @@ stream = ExtResource("11_0j08h")
 
 [node name="Break" type="AudioStreamPlayer" parent="SoundThing"]
 stream = ExtResource("9_80xon")
+
+[node name="Music" type="AudioStreamPlayer" parent="SoundThing"]
+stream = ExtResource("13_0q258")
+autoplay = true
 
 [connection signal="timeout" from="DamageGeneration/Timer" to="DamageGeneration" method="_on_timer_timeout"]
